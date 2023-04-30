@@ -90,14 +90,22 @@ export default {
             title: 'Type',
             dataIndex: 'type',
             originIdx: 2,
-            filters: this.typeArr,
-            responsive: ['sm']
-            // filters: [
-            //   {
-            //     text: 'Joe',
-            //     value: 'Joe',
-            //   },
-            // ],
+            responsive: ['sm'],
+            filters: [
+              {
+                text: 'Sticker',
+                value: 'Sticker',
+              },
+              {
+                text: 'Emoji',
+                value: 'Emoji',
+              },
+              {
+                text: 'Theme',
+                value: 'Theme',
+              },
+            ],
+            onFilter: (value, record) => record.type.indexOf(value) === 0,
           },
           {
             title: 'Country',
@@ -142,7 +150,7 @@ export default {
       this.idArr = [];
     },
     handleFileChange (e) {
-      // reset all data container start
+      // reset all data container
       this.resetAllDataContainer();
 
       let files = e.target.files;
@@ -210,16 +218,17 @@ export default {
       this.uniqIdArr = _.uniq(this.idArr);
 
       // uniq month
-      let tempMonthArr = _.sortedUniq( JSON.parse(JSON.stringify( this.monthArr )) )
+      let tempMonthArr = _.sortedUniq( this.monthArr )
       const newArr = tempMonthArr.sort((a, b) => {
         return moment(a).diff(b);
       });
       this.uniqMonthArr = newArr;
-      
+
       // set start month
-      this.startMonth = moment(this.monthArr[0]).format('YYYY/MM');
+      this.startMonth = moment(this.uniqMonthArr[0]).format('YYYY/MM');
+
       // set end month
-      this.endMonth = moment(this.monthArr[this.monthArr.length-1]).format('YYYY/MM');
+      this.endMonth = moment(this.uniqMonthArr[this.uniqMonthArr.length-1]).format('YYYY/MM');
     },
     jsonToTableData () {
       let resArr = [];

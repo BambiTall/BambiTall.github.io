@@ -23,15 +23,15 @@
 
         <a-collapse-panel key="2" header="為什麼會有 sales counts 等於 0 的狀況？">
           <p>
-            代表該項目有從超值方案（Premium）獲得分潤，但沒有另外銷售。
+            代表該項目有從超值方案(Premium)獲得分潤，但沒有另外售出。
           </p>
         </a-collapse-panel>
 
         <a-collapse-panel key="3" header="目前有哪些功能？">
           <ul>
-            <li>依照分潤金額排序</li>
-            <li>依照銷售組數排序</li>
-            <li>依類型過濾資料</li>
+            <li>依照分潤金額(Revenue Share)排序</li>
+            <li>依照銷售組數(Sales Counts)排序</li>
+            <li>依類型(Type)過濾資料</li>
             <li>顯示每個項目的銷售地區</li>
           </ul>
         </a-collapse-panel>
