@@ -78,6 +78,8 @@ export default {
 }
 ._qa_des{
   @extend %white-card-style;
+
+  padding: 2rem 1rem;
 }
 ._qa_des__img{
   margin-top: 1rem;
@@ -85,7 +87,6 @@ export default {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   overflow: hidden;
   border-radius: 1em;
-  width: 80%;
   margin: 2rem 0 3rem;
 }
 ._qa_des__title{
@@ -100,6 +101,9 @@ export default {
   }
   .ant-collapse-arrow{
     font-size: 1.25rem;
+  }
+  ._qa_des__img{
+    width: 80%;
   }
   ._qa_des{
     margin-left: 10%;

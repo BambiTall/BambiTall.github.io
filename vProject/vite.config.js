@@ -12,6 +12,9 @@ export default defineConfig({
     //   resolvers: [AntDesignVueResolver({ importStyle: "less" })],
     // }),
   ],
+  
+  base: '/',
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '../vProject/src'),

@@ -39,7 +39,7 @@
 
 <script>
 import _ from 'lodash';
-import * as moment from "moment/moment";
+import moment from "moment";
 import axios from "axios";
 
 export default {
@@ -353,7 +353,7 @@ export default {
 }
 ._return_table__duration{
   text-align: left;
-  display: flex;
+  display: flex !important;
   align-items: flex-end;
 }
 ._return_table__month{

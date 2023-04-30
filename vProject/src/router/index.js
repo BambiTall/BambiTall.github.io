@@ -1,20 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import Return from '@/views/Return.vue';
+import About from '@/views/About.vue';
+import Qa from '@/views/Qa.vue';
+
 const routes = [
   {
     path: '/',
     name: 'Return',
-    component: () => import('../views/Return.vue')
+    component: Return
   },
   {
     path: '/about',
-    name: 'about',
-    component: () => import('../views/About.vue')
+    name: 'About',
+    component: About
   },
   {
     path: '/qa',
-    name: 'qa',
-    component: () => import('../views/Qa.vue')
+    name: 'Qa',
+    component: Qa
   },
 ]
 let history = createWebHistory();
