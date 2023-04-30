@@ -1,0 +1,26 @@
+// breakpoints
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+
+// color
+$color-lightgray: #f6f6f6;
+$color-gray: #ddd;
+$color-line-light: #4cc764;
+$color-line-dark: #06c755;
+
+// padding
+$padding-base: 2rem;
+
+// extend
+%white-card-style{
+    background-color: white;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+%h1{
+    color: white !important;
+    margin-bottom: 1.5em !important;
+}
