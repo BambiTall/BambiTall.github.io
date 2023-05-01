@@ -23,15 +23,25 @@
         </label>
     </div>
 
+    <a-row v-if="tableData.length != 0" :gutter="20">
+      <a-col :xs="24" :md="12">
+        <div class="_return_duration">
+          <a-typography-title :level="5">期間</a-typography-title>
+          <div class="_return_duration__month"> {{ startMonth }} - {{ endMonth }} </div>
+        </div>
+      </a-col>
+      <a-col :xs="24" :md="12">
+        <div class="_return_total">
+          <a-typography-title :level="5">總分潤</a-typography-title>
+          <div class="_return_total__totalShare">
+            <span class="_return_total__jpy"> {{ totalShare }} 円</span>
+            <span class="_return_total__twd"> ( 約為新台幣 {{ ntdShare }} 元 ) </span>
+          </div>
+        </div>
+      </a-col>
+    </a-row>
+      
     <div class="_return_table" v-if="tableData.length != 0">
-      <a-row class="_return_table__summary" justify="space-between">
-        <a-col :sm="24" :md="12" class="_return_table__duration">
-          期間 <span class="_return_table__month"> {{ startMonth }} - {{ endMonth }} </span>
-        </a-col>
-        <a-col :sm="24" :md="12" class="_return_table__total">
-          總分潤 <span class="_return_table__totalShare">{{ totalShare }} 円 </span></a-col>
-      </a-row>
-
       <a-table :columns="fields" :data-source="tableData" @change="onChange" />
     </div>
   </div>
@@ -65,7 +75,7 @@ export default {
       typeArr: [],
 
       totalShare: 0,
-      // exrateData: null,
+      ntdShare: 0,
 
       // table
       fields: [
@@ -275,6 +285,9 @@ export default {
         subTotal += value.revenueShare
       });
       this.totalShare = subTotal;
+      
+      // to NTD
+      this.ntdShare = parseInt( this.totalShare / Number(this.mostRecentData["USD/JPY"]) * Number(this.mostRecentData["USD/NTD"]) );
     },
     async getExrate() {
       const config = {
@@ -284,7 +297,7 @@ export default {
           'accept': 'application/json',
           'If-Modified-Since': 'Mon, 26 Jul 1997 05:00:00 GMT',
           'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache', 
+          'Pragma': 'no-cache',
         },
         baseURL: 'https://openapi.taifex.com.tw/v1',
         // baseURL: 'https://cors-anywhere.herokuapp.com/https://openapi.taifex.com.tw/v1',
@@ -292,7 +305,9 @@ export default {
 
       try {
         const response = await axios(config)
-        console.log('response',response);
+        const data = response.data;
+        this.mostRecentData = data[data.length-1];
+
       } catch(err) {
         console.log('err')
       }
@@ -307,14 +322,11 @@ export default {
 
       this.fileCounter ++;
     },
-    // exrateData: function(data) {
-    //   this.exrateDate = (data.USDJPY.UTC).split(' ')[0];
-    // }
   },
   created(){
   },
   mounted(){
-    // this.getExrate()
+    this.getExrate()
   }
 }
 </script>
@@ -355,27 +367,20 @@ export default {
 ._return_table{
   @extend %white-card-style;
 }
-._return_table__summary{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: $padding-base;
+._return_duration{
+  @extend %white-card-style;
 }
-._return_table__duration{
-  text-align: left;
-  display: flex !important;
-  align-items: flex-end;
-}
-._return_table__month{
+._return_duration__month{
   font-size: 1.2rem;
   font-weight: bold;
   margin-left: .5rem;
   color: $color-line-light;
 }
-._return_table__total{
-  text-align: right;
+._return_total{
+  @extend %white-card-style;
 }
-._return_table__totalShare{
-  font-size: 2rem;
+._return_total__jpy{
+  font-size: 1.5rem;
   font-weight: bold;
   margin-left: .25rem;
   color: $color-line-light;
@@ -383,7 +388,7 @@ export default {
 
 // rwd
 @media only screen and (min-width: $screen-sm) {
-  ._return_table__month{
+  ._return_duration__month{
     font-size: 1.5rem;
   }
   ._return_upload__btn{
