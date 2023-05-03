@@ -35,7 +35,7 @@
           <a-typography-title :level="5">總分潤</a-typography-title>
           <div class="_return_total__totalShare">
             <span class="_return_total__jpy"> {{ totalShare }} 円</span>
-            <span class="_return_total__twd"> ( 約為新台幣 {{ ntdShare }} 元 ) </span>
+            <span class="_return_total__twd" v-if="ntdShare" > ( 約為新台幣 {{ ntdShare }} 元 ) </span>
           </div>
         </div>
       </a-col>
@@ -51,6 +51,7 @@
 import _ from 'lodash';
 import moment from "moment";
 import axios from "axios";
+import exchangeRates from '@/assets/json/DailyForeignExchangeRates.json'
 
 export default {
   name: 'Return',
@@ -142,7 +143,8 @@ export default {
             },
             defaultSortOrder: 'descend',
           },
-      ]
+      ],
+      exchangeRates: exchangeRates
     }
   },
   methods: {
@@ -306,10 +308,9 @@ export default {
       try {
         const response = await axios(config)
         const data = response.data;
-        this.mostRecentData = data[data.length-1];
-
+        this.mostRecentData = _.last(data);
       } catch(err) {
-        console.log('err')
+        this.mostRecentData = _.last(exchangeRates);
       }
     }
   },

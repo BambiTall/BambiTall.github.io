@@ -1,0 +1,11 @@
+"From (GMT+9:00)","To (GMT+9:00)",Type,"Item ID","Item Title","Country of Sale",Sales,"Sales Counts","Share Amount","Revenue Share Rate","Revenue Share (Pre-Tax)",VAT,"Revenue Share",Compensation
+2023.02.01,2023.02.28,Emoji,000001,"My emoji 1",TW,6596,36,6596,35,2309,0,2309,N
+2023.02.01,2023.02.28,Emoji,000002,"My emoji 2",TW,964,5,964,35,337,0,337,N
+2023.02.01,2023.02.28,Sticker,10000001,"My sticker 1",TW,88,1,88,35,31,0,31,N
+2023.02.01,2023.02.28,Sticker,10000001,"My sticker 1",Premium,,,,,,0,24,N
+2023.02.01,2023.02.28,Sticker,10000002,"My sticker 2",Premium,,,,,,0,4,N
+2023.02.01,2023.02.28,Sticker,10000003,"My sticker 3",TW,176,1,176,35,62,0,62,N
+2023.02.01,2023.02.28,Sticker,10000003,"My sticker 3",Premium,,,,,,0,12,N
+2023.02.01,2023.02.28,Sticker,10000004,"My sticker 4",TW,176,1,176,35,62,0,62,N
+2023.02.01,2023.02.28,Theme,20000001,"My Theme 1",,88,1,88,35,31,0,31,N
+

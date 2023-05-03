@@ -4,7 +4,13 @@
     <div class="_qa_des">
       <a-collapse class="_qa_collapse" v-model:activeKey="activeKey" ghost>
         
-        <a-collapse-panel key="1" header="我該去哪裡下載收益報表？">
+        <a-collapse-panel key="1" header="沒有資料可以試用嗎？">
+          可以先點
+          <a-typography-link href="@/assets/return-sample-file.csv" target="_blank">這裡</a-typography-link>
+          下載測試用資料喔！
+        </a-collapse-panel>
+
+        <a-collapse-panel key="2" header="我該去哪裡下載收益報表？">
           <a-timeline>
             <a-timeline-item class="_qa_collapse_content">
               登入後台後點選匯款申請
@@ -21,13 +27,13 @@
           </a-timeline>
         </a-collapse-panel>
 
-        <a-collapse-panel key="2" header="為什麼會有 sales counts 等於 0 的狀況？">
+        <a-collapse-panel key="3" header="為什麼會有 sales counts 等於 0 的狀況？">
           <p>
             代表該項目有從超值方案(Premium)獲得分潤，但沒有另外售出。
           </p>
         </a-collapse-panel>
 
-        <a-collapse-panel key="3" header="目前有哪些功能？">
+        <a-collapse-panel key="4" header="目前有哪些功能？">
           <ul>
             <li>依照分潤金額(Revenue Share)排序</li>
             <li>依照銷售組數(Sales Counts)排序</li>
