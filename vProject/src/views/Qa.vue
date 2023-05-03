@@ -6,7 +6,7 @@
         
         <a-collapse-panel key="1" header="沒有資料可以試用嗎？">
           可以先點
-          <a-typography-link href="@/assets/return-sample-file.csv" target="_blank">這裡</a-typography-link>
+          <a-typography-link href="https://github.com/BambiTall/BambiTall.github.io/blob/main/vProject/src/assets/return-sample-file.csv" target="_blank">這裡</a-typography-link>
           下載測試用資料喔！
         </a-collapse-panel>
 
